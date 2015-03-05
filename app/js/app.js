@@ -1,6 +1,6 @@
 app = angular.module("FoodTrack", []);
-app.controller('dayController', function() {
-    this.today = {
+app.controller('dayController', ['$scope', function($scope) {
+    $scope.today = {
         "Grains": 0,
         "Fats": 0,
         "Vegetables": 0,
@@ -10,11 +10,11 @@ app.controller('dayController', function() {
         "Water": 0,
         "Sweets": 0
     };
-    this.add = function (what, amount) {
+    $scope.add = function (what, amount) {
         if (amount + this.today[what] >= 0)
             this.today[what] += amount;
     }
-});
+}]);
 app.controller('settingsController', function() {
     this.ftSettings = {
         "maxPortions": {
