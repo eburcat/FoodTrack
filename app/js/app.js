@@ -1,4 +1,4 @@
-app = angular.module("FoodTrack", []);
+app = angular.module("FoodTrack", ['ngMaterial']);
 app.controller('dayController', ['$scope', function($scope) {
     $scope.today = {
         "Grains": 0,

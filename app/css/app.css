@@ -1,0 +1,8 @@
+md-toolbar h1 {
+    font-size: 1.250em;
+    font-weight: 400;
+    margin: auto;
+}
+.countButton {
+    min-width: 3em;
+}
