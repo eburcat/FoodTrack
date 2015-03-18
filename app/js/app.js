@@ -1,5 +1,7 @@
 app = angular.module("FoodTrack", ['ngMaterial']);
 app.controller('dayController', ['$scope', function($scope) {
+    Parse.initialize("9EVU6bc3ZEDiiWG8LBX6HNJbyiwuPhvWpfLnzZqB", "uy3NAUCMeGf0qzcTsS5xI206trLdg6L2eB6QAIA7");
+
     $scope.today = {
         "Grains": 0,
         "Fats": 0,
@@ -13,7 +15,15 @@ app.controller('dayController', ['$scope', function($scope) {
     $scope.add = function (what, amount) {
         if (amount + this.today[what] >= 0)
             this.today[what] += amount;
-    }
+    };
+
+    $scope.save = function() {
+        var DaySummaryObject = Parse.Object.extend("DaySummary");
+        var daySummaryObject= new DaySummaryObject();
+        daySummaryObject.save(this.today).then(function(object) {
+            console.log("yay! it worked");
+        });
+    };
 }]);
 app.controller('settingsController', function() {
     this.ftSettings = {
