@@ -1,4 +1,4 @@
-app = angular.module("FoodTrack", ['ngMaterial']);
+app = angular.module("FoodTrack", ['ngRoute', 'ngMaterial']);
 app.controller('dayController', ['$scope', function($scope) {
     Parse.initialize("9EVU6bc3ZEDiiWG8LBX6HNJbyiwuPhvWpfLnzZqB", "uy3NAUCMeGf0qzcTsS5xI206trLdg6L2eB6QAIA7");
 
@@ -39,3 +39,14 @@ app.controller('settingsController', function() {
         }
     };
 });
+
+app.config(['$routeProvider',
+    function($routeProvider) {
+        $routeProvider.
+            when('/counters', {
+                templateUrl: 'partials/counters.html'
+            }).
+            otherwise({
+                redirectTo: '/counters'
+            });
+}]);

@@ -1,0 +1,17 @@
+<md-content flex class="md-padding md-default-theme md-scroll-y" ng-controller="settingsController as settings">
+    <div ng-controller="dayController" layout="column">
+        <div ng-repeat="(foodType, value) in today" layout="row" layout-padding>
+            <div flex="50">
+                {{foodType}}: {{value}} / {{settings.ftSettings.maxPortions[foodType]}}
+            </div>
+            <div flex>
+                <md-button  class="md-raised countButton" ng-click="add(foodType,  1)">+</md-button>
+            </div>
+            <div flex>
+                <md-button class="md-raised countButton" ng-click="add(foodType, -1)">-</md-button>
+                <span ng-show="value >= settings.ftSettings.maxPortions[foodType]">Carefull!</span>
+            </div>
+        </div>
+        <md-button class="md-raised" ng-click="save()">Save</md-button>
+    </div>
+</md-content>
